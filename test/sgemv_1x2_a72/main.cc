@@ -48,12 +48,12 @@ int main() {
       output[1] += input[i] * kernel[2 * i + 1];
     }
     auto t2 = system_clock::now();
-    printf("output: [%f %f], took %.4lf us\n", output[0], output[1], duration_cast<nanoseconds>(t2 - t1).count() / 1000000.);
+    printf("output: [%f %f], took %.4lf ms\n", output[0], output[1], duration_cast<microseconds>(t2 - t1).count() / 1000.);
 
     auto t3 = system_clock::now();
     sgemv_1x2_a72(biases, input, kernel, kInputSize, output);
     auto t4 = system_clock::now();
-    printf("output: [%f %f], took %.4lf us\n", output[0], output[1], duration_cast<nanoseconds>(t4 - t3).count() / 1000000.);
+    printf("output: [%f %f], took %.4lf ms\n", output[0], output[1], duration_cast<microseconds>(t4 - t3).count() / 1000.);
   }
 
   free(input);

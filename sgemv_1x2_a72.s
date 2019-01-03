@@ -30,8 +30,7 @@ start_mul:
 
 loop4:
   ldr q25, [x1]
-  ldp d26, d27, [x2]
-  ldp d28, d29, [x2, 0x10]
+  ld1 {v26.2s, v27.2s, v28.2s, v29.2s}, [x2]
   prfm pldl1keep, [x1, 0x100]
   subs x9, x9, 0x1
   fmla v30.2s, v26.2s, v25.s[0]
